@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "silk",
+  "version": "${version}",
+  "name": "Silk",
+  "description": "Silk is a next-generation innovative Minecraft client aiming at getting the best of both worlds (1.8 & 1.9+)",
+  "authors": [
+    "SimplyCmd"
+  ],
+  "contributors": [],
+  "contact": {
+    "homepage": "https://simplycmd.github.io/Silk/",
+    "sources": "https://github.com/SimplyCmd/Silk"
+  },
+  "license": "MIT",
+  "icon": "assets/silk/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.simplycmd.silk.Silk"
+    ],
+    "client": ["io.github.simplycmd.silk.AntiGhost"],
+    "server": []
+  },
+  "mixins": [
+    "silk.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.9.0",
+    "fabric": "*"
+  }
+}

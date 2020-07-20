@@ -11,8 +11,6 @@ import net.minecraft.client.gui.screen.TitleScreen;
 public class TitleScreenDebrand {
 	@Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MinecraftClient;isModded()Z"))
 	public boolean isModded(MinecraftClient client) {
-	//	if (!Main.CONFIG.modded.titleScreen) return false;
-        //return client.isModded();
         return false;
 	}
 }

@@ -3,7 +3,7 @@
   "package": "io.github.simplycmd.silk.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": ["LegacyPvp"],
-  "client": ["TitleScreenDebrand","ClientDebrand","test"],
+  "client": ["TitleScreenDebrand","ClientDebrand"],
   "server": [],
   "injectors": {
     "defaultRequire": 1

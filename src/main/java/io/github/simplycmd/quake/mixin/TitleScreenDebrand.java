@@ -1,4 +1,4 @@
-package io.github.simplycmd.silk.mixin;
+package io.github.simplycmd.quake.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

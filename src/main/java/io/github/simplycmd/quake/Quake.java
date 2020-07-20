@@ -1,4 +1,4 @@
-package io.github.simplycmd.silk;
+package io.github.simplycmd.quake;
 
 import net.fabricmc.api.ModInitializer;
 
@@ -6,12 +6,12 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Silk implements ModInitializer {
+public class Quake implements ModInitializer {
 
     public static Logger LOGGER = LogManager.getLogger();
 
-    public static final String MOD_ID = "silk";
-    public static final String MOD_NAME = "Silk";
+    public static final String MOD_ID = "quake";
+    public static final String MOD_NAME = "Quake Client";
 
     @Override
     public void onInitialize() {

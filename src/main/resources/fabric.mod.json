@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
-  "id": "silk",
+  "id": "quake",
   "version": "${version}",
-  "name": "Silk",
-  "description": "Silk is a next-generation innovative Minecraft client aiming at getting the best of both worlds (1.8 & 1.9+)",
+  "name": "Quake Client",
+  "description": "Quake Client is a next-generation innovative Minecraft client aiming at getting the best of both worlds (1.8 & 1.9+)",
   "authors": [
     "SimplyCmd"
   ],
   "contributors": [],
   "contact": {
-    "homepage": "https://simplycmd.github.io/Silk/",
-    "sources": "https://github.com/SimplyCmd/Silk"
+    "homepage": "https://SimplyCmd.github.io/Quake/",
+    "sources": "https://github.com/SimplyCmd/Quake"
   },
   "license": "MIT",
-  "icon": "assets/silk/icon.png",
+  "icon": "assets/quake/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "io.github.simplycmd.silk.Silk"
+      "io.github.simplycmd.quake.Quake"
     ],
-    "client": ["io.github.simplycmd.silk.AntiGhost"],
+    "client": ["io.github.simplycmd.quake.AntiGhost"],
     "server": []
   },
   "mixins": [
-    "silk.mixins.json"
+    "quake.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.9.0",

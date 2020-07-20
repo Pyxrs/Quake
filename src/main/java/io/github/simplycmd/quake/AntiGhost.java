@@ -1,4 +1,4 @@
-package io.github.simplycmd.silk;
+package io.github.simplycmd.quake;
 
 import com.mojang.brigadier.CommandDispatcher;
 
@@ -27,10 +27,10 @@ public class AntiGhost implements ClientModInitializer
     @Override
     public void onInitializeClient()
     {
-        final String category="key.categories.silk";
+        final String category="key.categories.quake";
         KeyBindingRegistry.INSTANCE.addCategory(category);
         KeyBindingRegistry.INSTANCE.register(requestBlocks = FabricKeyBinding.Builder
-                .create(new Identifier("silk:reveal"), InputUtil.Type.KEYSYM,
+                .create(new Identifier("quake:reveal"), InputUtil.Type.KEYSYM,
                         GLFW_KEY_G, category)
                 .build());
         ClientTickCallback.EVENT.register(e->keyPressed());

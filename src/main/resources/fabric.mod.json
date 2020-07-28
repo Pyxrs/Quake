@@ -19,7 +19,7 @@
     "main": [
       "io.github.simplycmd.quake.Quake"
     ],
-    "client": ["io.github.simplycmd.quake.AntiGhost"],
+    "client": ["io.github.simplycmd.quake.AntiGhost","io.github.simplycmd.quake.Fullbright"],
     "server": []
   },
   "mixins": [

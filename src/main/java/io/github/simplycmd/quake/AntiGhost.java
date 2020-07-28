@@ -23,10 +23,10 @@ public class AntiGhost implements ClientModInitializer
     @Override
     public void onInitializeClient()
     {
-        final String category="key.categories.antighost";
+        final String category="key.categories.quake";
         KeyBindingRegistry.INSTANCE.addCategory(category);
         KeyBindingRegistry.INSTANCE.register(requestBlocks = FabricKeyBinding.Builder
-                .create(new Identifier("antighost:reveal"), InputUtil.Type.KEYSYM,
+                .create(new Identifier("quake:reveal"), InputUtil.Type.KEYSYM,
                         GLFW_KEY_G, category)
                 .build());
         ClientTickCallback.EVENT.register(e->keyPressed());

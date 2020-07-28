@@ -3,7 +3,7 @@
   "package": "io.github.simplycmd.quake.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": ["LegacyPvp"],
-  "client": ["TitleScreenDebrand","ClientDebrand"],
+  "client": ["TitleScreenDebrand","ClientDebrand","FullbrightMixin"],
   "server": [],
   "injectors": {
     "defaultRequire": 1

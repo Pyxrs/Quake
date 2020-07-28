@@ -1,5 +1,8 @@
 {
     "key.categories.quake": "Quake Client",
-    "key.quake.reveal": "Reveal ghost blocks",
-    "msg.request": "Revealing glitched blocks (Don't spam this or else you will get kicked!)"
+
+    "key.quake.reveal": "Reveal Ghost Blocks",
+    "msg.request": "Revealing glitched blocks (Don't spam this or else you will get kicked!)",
+
+    "key.quake.fullbright": "Toggle Fullbright"
 }

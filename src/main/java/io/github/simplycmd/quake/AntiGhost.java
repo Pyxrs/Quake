@@ -1,9 +1,5 @@
 package io.github.simplycmd.quake;
 
-import com.mojang.brigadier.CommandDispatcher;
-
-import org.apache.logging.log4j.Level;
-
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.keybinding.FabricKeyBinding;
 import net.fabricmc.fabric.api.client.keybinding.KeyBindingRegistry;
@@ -13,7 +9,6 @@ import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.network.packet.c2s.play.PlayerActionC2SPacket;
-import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -23,14 +18,15 @@ import static org.lwjgl.glfw.GLFW.GLFW_KEY_G;
 public class AntiGhost implements ClientModInitializer
 {
     static FabricKeyBinding requestBlocks;
+    //static KeyBinding requestBlock;
     
     @Override
     public void onInitializeClient()
     {
-        final String category="key.categories.quake";
+        final String category="key.categories.antighost";
         KeyBindingRegistry.INSTANCE.addCategory(category);
         KeyBindingRegistry.INSTANCE.register(requestBlocks = FabricKeyBinding.Builder
-                .create(new Identifier("quake:reveal"), InputUtil.Type.KEYSYM,
+                .create(new Identifier("antighost:reveal"), InputUtil.Type.KEYSYM,
                         GLFW_KEY_G, category)
                 .build());
         ClientTickCallback.EVENT.register(e->keyPressed());
@@ -40,8 +36,6 @@ public class AntiGhost implements ClientModInitializer
         ClientPlayerEntity player = MinecraftClient.getInstance().player;
         if (requestBlocks.wasPressed()) {
             this.execute();
-            //Silk.log(Level.INFO, "BOOOM");
-            ///new TranslatableText("msg.request")
             player.sendMessage(new TranslatableText("msg.request"), false);
         }
     }

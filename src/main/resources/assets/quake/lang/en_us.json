@@ -4,5 +4,12 @@
     "key.quake.reveal": "Reveal Ghost Blocks",
     "msg.request": "Revealing glitched blocks (Don't spam this or else you will get kicked!)",
 
-    "key.quake.fullbright": "Toggle Fullbright"
+    "key.quake.fullbright": "Toggle Fullbright",
+
+    "key.quake.sprint": "Toggle Sprint",
+    "key.quake.sneak": "Toggle Sneak",
+    "msg.sprinthold": "Changed sprint mode to HOLD. (This will take effect in a few seconds)",
+    "msg.sprinttoggle": "Changed sprint mode to TOGGLE. (This will take effect in a few seconds)",
+    "msg.sneakhold": "Changed sneak mode to HOLD. (This will take effect in a few seconds)",
+    "msg.sneaktoggle": "Changed sneak mode to TOGGLE. (This will take effect in a few seconds)"
 }

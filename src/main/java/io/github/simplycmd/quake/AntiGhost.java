@@ -1,34 +1,41 @@
 package io.github.simplycmd.quake;
 
+import org.lwjgl.glfw.GLFW;
+
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.keybinding.FabricKeyBinding;
-import net.fabricmc.fabric.api.client.keybinding.KeyBindingRegistry;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.event.client.ClientTickCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.client.options.GameOptions;
+import net.minecraft.client.options.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.network.packet.c2s.play.PlayerActionC2SPacket;
 import net.minecraft.text.TranslatableText;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import static org.lwjgl.glfw.GLFW.GLFW_KEY_G;
 
 public class AntiGhost implements ClientModInitializer
 {
-    static FabricKeyBinding requestBlocks;
-    //static KeyBinding requestBlock;
+    private KeyBinding requestBlocks;
     
     @Override
     public void onInitializeClient()
     {
-        final String category="key.categories.quake";
-        KeyBindingRegistry.INSTANCE.addCategory(category);
-        KeyBindingRegistry.INSTANCE.register(requestBlocks = FabricKeyBinding.Builder
-                .create(new Identifier("quake:reveal"), InputUtil.Type.KEYSYM,
-                        GLFW_KEY_G, category)
-                .build());
+        SetupKeybinds();
+    }
+
+    private void SetupKeybinds() {
+        requestBlocks = new KeyBinding(
+            "key.quake.reveal",
+            InputUtil.Type.KEYSYM,
+            GLFW.GLFW_KEY_G,
+            "key.categories.quake"
+        );
+
+        KeyBindingHelper.registerKeyBinding(requestBlocks);
+
         ClientTickCallback.EVENT.register(e->keyPressed());
     }
 

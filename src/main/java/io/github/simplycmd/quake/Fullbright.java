@@ -20,7 +20,7 @@ public class Fullbright implements ClientModInitializer {
     private boolean maxBrightToggled = false;
     private double prevBrightness;
     private boolean prevPressed;
-    private KeyBinding brightnessBind;
+    private KeyBinding fullbrightKey;
     
 
 	@Override
@@ -32,14 +32,14 @@ public class Fullbright implements ClientModInitializer {
     private void SetupKeybinds() {
 
         // Create the max brightness toggle
-        brightnessBind = new KeyBinding(
+        fullbrightKey = new KeyBinding(
             "key.quake.fullbright",
             InputUtil.Type.KEYSYM,
             GLFW.GLFW_KEY_B,
             "key.categories.quake"
         );
 
-        KeyBindingHelper.registerKeyBinding(brightnessBind);
+        KeyBindingHelper.registerKeyBinding(fullbrightKey);
         
         // Callback that toggles brightness between set value and maximum
         ClientTickCallback.EVENT.register(e -> {
@@ -49,7 +49,7 @@ public class Fullbright implements ClientModInitializer {
                 gameOptions = client.options;
             } 
 
-            if (brightnessBind.isPressed()) {
+            if (fullbrightKey.isPressed()) {
                 if (!prevPressed) {
                     if (!maxBrightToggled) {
                         prevBrightness = gameOptions.gamma;

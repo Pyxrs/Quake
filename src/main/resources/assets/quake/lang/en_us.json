@@ -1,10 +1,16 @@
 {
     "key.categories.quake": "Quake Client",
 
+    "key.quake.menu": "Quake Menu",
+    "gui.button.fullbright": "Fullbright",
+    "gui.button.togglesprint": "Toggle Sprint",
+
     "key.quake.reveal": "Reveal Ghost Blocks",
     "msg.request": "Revealing glitched blocks (Don't spam this or else you will get kicked!)",
 
     "key.quake.fullbright": "Toggle Fullbright",
+    "msg.fullbright": "Fullbright is ON",
+    "msg.nobright": "Fullbright is OFF",
 
     "key.quake.sprint": "Toggle Sprint",
     "key.quake.sneak": "Toggle Sneak",

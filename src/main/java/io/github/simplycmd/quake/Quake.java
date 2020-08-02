@@ -1,12 +1,12 @@
 package io.github.simplycmd.quake;
 
-import net.fabricmc.api.ModInitializer;
+import net.fabricmc.api.ClientModInitializer;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Quake implements ModInitializer {
+public class Quake implements ClientModInitializer {
 
     public static Logger LOGGER = LogManager.getLogger();
 
@@ -14,7 +14,7 @@ public class Quake implements ModInitializer {
     public static final String MOD_NAME = "Quake Client";
 
     @Override
-    public void onInitialize() {
+    public void onInitializeClient() {
         log(Level.INFO, "Initializing");
     }
 

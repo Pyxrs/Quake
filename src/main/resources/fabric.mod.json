@@ -16,10 +16,8 @@
   "icon": "assets/quake/icon.png",
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "io.github.simplycmd.quake.Quake"
-    ],
-    "client": ["io.github.simplycmd.quake.AntiGhost","io.github.simplycmd.quake.Fullbright","io.github.simplycmd.quake.Toggle"],
+    "main": [],
+    "client": ["io.github.simplycmd.quake.Quake","io.github.simplycmd.quake.Keybinds"],
     "server": []
   },
   "mixins": [

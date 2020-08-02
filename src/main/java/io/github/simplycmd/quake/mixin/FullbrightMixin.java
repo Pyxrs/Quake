@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import io.github.simplycmd.quake.Fullbright;
+import io.github.simplycmd.quake.Keybinds;
 
 @Mixin(DoubleOption.class)
 public class FullbrightMixin {
@@ -35,14 +35,14 @@ public class FullbrightMixin {
             CallbackInfo info) {
         // Modifies the max and displayStringGetter of the brightness slider
         if (key.equals("options.gamma")) {
-            this.max = Fullbright.MAX_BRIGHTNESS;
+            this.max = Keybinds.MAX_BRIGHTNESS;
             this.displayStringGetter = (gameOptions, doubleOption) -> {
                 double d = doubleOption.getRatio(doubleOption.get(gameOptions));
                 MutableText mutableText = doubleOption.getDisplayPrefix();
                 if (d == 0.0D) {
                     return mutableText.append((Text)(new TranslatableText("options.gamma.min")));
                 } else {
-                    return d == 1.0D ? mutableText.append((Text)(new TranslatableText("options.gamma.max"))) : mutableText.append("+" + (int)(d * Fullbright.MAX_BRIGHTNESS * 100.0D) + "%");
+                    return d == 1.0D ? mutableText.append((Text)(new TranslatableText("options.gamma.max"))) : mutableText.append("+" + (int)(d * Keybinds.MAX_BRIGHTNESS * 100.0D) + "%");
                 }
             };
         }

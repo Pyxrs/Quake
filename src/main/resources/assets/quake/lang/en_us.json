@@ -2,20 +2,22 @@
     "key.categories.quake": "Quake Client",
 
     "key.quake.menu": "Quake Menu",
-    "gui.button.fullbright": "Fullbright",
-    "gui.button.togglesprint": "Toggle Sprint",
 
-    "key.quake.reveal": "Reveal Ghost Blocks",
-    "msg.request": "Revealing glitched blocks (Don't spam this or else you will get kicked!)",
+    "key.quake.reveal": "Fix Glitching",
+    "msg.request": "Fixing Glitching (Don't spam this or else you will get kicked!)",
 
     "key.quake.fullbright": "Toggle Fullbright",
+    "gui.button.fullbright": "Fullbright",
     "msg.fullbright": "Fullbright is ON",
     "msg.nobright": "Fullbright is OFF",
 
     "key.quake.sprint": "Toggle Sprint",
+    "gui.button.togglesprint": "Toggle Sprint",
+    "msg.sprinthold": "Changed sprint mode to HOLD",
+    "msg.sprinttoggle": "Changed sprint mode to TOGGLE",
+
     "key.quake.sneak": "Toggle Sneak",
-    "msg.sprinthold": "Changed sprint mode to HOLD. (This will take effect in a few seconds)",
-    "msg.sprinttoggle": "Changed sprint mode to TOGGLE. (This will take effect in a few seconds)",
-    "msg.sneakhold": "Changed sneak mode to HOLD. (This will take effect in a few seconds)",
-    "msg.sneaktoggle": "Changed sneak mode to TOGGLE. (This will take effect in a few seconds)"
+    "gui.button.togglesneak": "Toggle Sneak",
+    "msg.sneakhold": "Changed sneak mode to HOLD",
+    "msg.sneaktoggle": "Changed sneak mode to TOGGLE"
 }

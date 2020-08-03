@@ -5,6 +5,7 @@ import org.lwjgl.glfw.GLFW;
 import io.github.simplycmd.quake.gui.MenuGui;
 import io.github.simplycmd.quake.gui.MenuScreen;
 import io.github.simplycmd.quake.mods.Fullbright;
+import io.github.simplycmd.quake.mods.Toggles;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.event.client.ClientTickCallback;
@@ -86,18 +87,12 @@ public class Keybinds extends MenuGui implements ClientModInitializer {
         ClientTickCallback.EVENT.register(e -> {
             MinecraftClient client = MinecraftClient.getInstance();
 
-            //=========================//
-            //           MENU          //
-            //=========================//
-
+            //Menu
             if (menu.isPressed()) {
                 client.openScreen(new MenuScreen(new MenuGui()));
             }
 
-            //=========================//
-            //        FULLBRIGHT       //
-            //=========================//
-
+            //Fullbright
             if (fullbrightKey.isPressed()) {
                 if(!prevPressed) {
                     Fullbright.Fullbright();
@@ -107,34 +102,17 @@ public class Keybinds extends MenuGui implements ClientModInitializer {
                 prevPressed = false;
             }
 
-            //=========================//
-            // TOGGLE SPRINT AND SNEAK //
-            //=========================//
-
+            //Toggle Sprint
             if (toggleSprint.wasPressed()) {
-                if(client.options.sprintToggled == true) {
-                    client.player.sendMessage(new TranslatableText("msg.sprinthold"), false);
-                    client.options.sprintToggled = false;
-                } else {
-                    client.player.sendMessage(new TranslatableText("msg.sprinttoggle"), false);
-                    client.options.sprintToggled = true;
-                }
+                Toggles.ToggleSprint();
             }
             
+            //Toggle Sneak
             if (toggleSneak.wasPressed()) {
-                if(client.options.sneakToggled == true) {
-                    client.player.sendMessage(new TranslatableText("msg.sneakhold"), false);
-                    client.options.sneakToggled = false;
-                } else {
-                    client.player.sendMessage(new TranslatableText("msg.sneaktoggle"), false);
-                    client.options.sneakToggled = true;
-                }
+                Toggles.ToggleSneak();
             }
 
-            //=========================//
-            //      GHOST BLOCKS       //
-            //=========================//
-
+            //Ghost Blocks
             if (requestBlocks.wasPressed()) {
                 MinecraftClient mc=MinecraftClient.getInstance();
                 ClientPlayNetworkHandler conn = mc.getNetworkHandler();

@@ -4,6 +4,7 @@ import io.github.cottonmc.cotton.gui.client.LightweightGuiDescription;
 import io.github.cottonmc.cotton.gui.widget.WGridPanel;
 import io.github.cottonmc.cotton.gui.widget.WLabel;
 import io.github.cottonmc.cotton.gui.widget.WToggleButton;
+import io.github.simplycmd.quake.mixin.LegacyPvp;
 import io.github.simplycmd.quake.mods.Fullbright;
 import io.github.simplycmd.quake.mods.Toggles;
 import net.minecraft.client.MinecraftClient;
@@ -42,6 +43,12 @@ public class MenuGui extends LightweightGuiDescription {
         root.add(toggleSneak, 0, 3);
         toggleSneak.setToggle(Toggles.snToggle);
         toggleSneak.setOnToggle(b -> Toggles.ToggleSneak());
+
+        //Toggle Legacy Pvp
+        WToggleButton legacyPvp = new WToggleButton(new TranslatableText("gui.button.pvp"));
+        root.add(legacyPvp, 0, 4);
+        //legacyPvp.setToggle(Pvp.pvpToggle);
+        //legacyPvp.setOnToggle(b -> Pvp.Pvp());
         
         root.validate(this);
     }

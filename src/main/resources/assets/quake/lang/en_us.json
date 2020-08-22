@@ -19,5 +19,10 @@
     "key.quake.sneak": "Toggle Sneak",
     "gui.button.togglesneak": "Toggle Sneak",
     "msg.sneakhold": "Changed sneak mode to HOLD",
-    "msg.sneaktoggle": "Changed sneak mode to TOGGLE"
+    "msg.sneaktoggle": "Changed sneak mode to TOGGLE",
+
+    "key.quake.pvp": "Toggle Legacy Pvp (1.8/1.9+)",
+    "gui.button.pvp": "Toggle Legacy Pvp",
+    "msg.18pvp": "1.8 Pvp is ON",
+    "msg.19pvp": "1.8 Pvp is OFF"
 }

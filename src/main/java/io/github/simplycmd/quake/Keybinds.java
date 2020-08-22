@@ -4,6 +4,7 @@ import org.lwjgl.glfw.GLFW;
 
 import io.github.simplycmd.quake.gui.MenuGui;
 import io.github.simplycmd.quake.gui.MenuScreen;
+import io.github.simplycmd.quake.mixin.LegacyPvp;
 import io.github.simplycmd.quake.mods.Fullbright;
 import io.github.simplycmd.quake.mods.Toggles;
 import net.fabricmc.api.ClientModInitializer;
@@ -29,6 +30,7 @@ public class Keybinds extends MenuGui implements ClientModInitializer {
     private KeyBinding toggleSprint;
     private KeyBinding toggleSneak;
     private KeyBinding requestBlocks;
+    private KeyBinding legacyPvp;
     public static KeyBinding narratorRebind;
     public static KeyBinding menu;
     
@@ -76,6 +78,12 @@ public class Keybinds extends MenuGui implements ClientModInitializer {
             GLFW.GLFW_KEY_N,
             "key.categories.misc"
         );
+        legacyPvp = new KeyBinding(
+            "key.quake.pvp",
+            InputUtil.Type.KEYSYM,
+            GLFW.GLFW_KEY_P,
+            "key.categories.quake"
+        );
 
         KeyBindingHelper.registerKeyBinding(menu);
         KeyBindingHelper.registerKeyBinding(fullbrightKey);
@@ -83,6 +91,7 @@ public class Keybinds extends MenuGui implements ClientModInitializer {
         KeyBindingHelper.registerKeyBinding(toggleSneak);
         KeyBindingHelper.registerKeyBinding(requestBlocks);
         KeyBindingHelper.registerKeyBinding(narratorRebind);
+        KeyBindingHelper.registerKeyBinding(legacyPvp);
         
         ClientTickCallback.EVENT.register(e -> {
             MinecraftClient client = MinecraftClient.getInstance();
@@ -130,6 +139,11 @@ public class Keybinds extends MenuGui implements ClientModInitializer {
                             conn.sendPacket(packet);
                         }
                 client.player.sendMessage(new TranslatableText("msg.request"), false);
+            }
+
+            //Toggle Legacy Pvp
+            if (legacyPvp.wasPressed()) {
+                //Pvp.Pvp();
             }
         });
     }

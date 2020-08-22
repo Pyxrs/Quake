@@ -6,8 +6,6 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import io.github.simplycmd.quake.mods.Toggles;
-
 public class Quake implements ClientModInitializer {
 
     public static Logger LOGGER = LogManager.getLogger();

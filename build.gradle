@@ -31,6 +31,10 @@ dependencies {
 	modImplementation "io.github.cottonmc:LibGui:${project.libgui_version}"
 	modCompile "io.github.cottonmc:LibGui:${project.libgui_version}"
 	include "io.github.cottonmc:LibGui:${project.libgui_version}"
+
+	modImplementation fileTree(dir: 'extramods', include: '*.jar')
+	modCompile fileTree(dir: 'extramods', include: '*.jar')
+	include fileTree(dir: 'extramods', include: '*.jar')
 }
 
 processResources {

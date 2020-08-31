@@ -45,8 +45,8 @@ public class MenuGui extends LightweightGuiDescription {
         toggleSneak.setOnToggle(b -> Toggles.ToggleSneak());
 
         //Toggle Legacy Pvp
-        WToggleButton legacyPvp = new WToggleButton(new TranslatableText("gui.button.pvp"));
-        root.add(legacyPvp, 0, 4);
+        //WToggleButton legacyPvp = new WToggleButton(new TranslatableText("gui.button.pvp"));
+        //root.add(legacyPvp, 0, 4);
         //legacyPvp.setToggle(Pvp.pvpToggle);
         //legacyPvp.setOnToggle(b -> Pvp.Pvp());
         

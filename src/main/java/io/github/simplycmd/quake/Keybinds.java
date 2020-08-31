@@ -78,12 +78,12 @@ public class Keybinds extends MenuGui implements ClientModInitializer {
             GLFW.GLFW_KEY_N,
             "key.categories.misc"
         );
-        legacyPvp = new KeyBinding(
+        /*legacyPvp = new KeyBinding(
             "key.quake.pvp",
             InputUtil.Type.KEYSYM,
-            GLFW.GLFW_KEY_P,
+            GLFW.GLFW_KEY_UNKNOWN,
             "key.categories.quake"
-        );
+        );*/
 
         KeyBindingHelper.registerKeyBinding(menu);
         KeyBindingHelper.registerKeyBinding(fullbrightKey);
@@ -91,7 +91,7 @@ public class Keybinds extends MenuGui implements ClientModInitializer {
         KeyBindingHelper.registerKeyBinding(toggleSneak);
         KeyBindingHelper.registerKeyBinding(requestBlocks);
         KeyBindingHelper.registerKeyBinding(narratorRebind);
-        KeyBindingHelper.registerKeyBinding(legacyPvp);
+        //KeyBindingHelper.registerKeyBinding(legacyPvp);
         
         ClientTickCallback.EVENT.register(e -> {
             MinecraftClient client = MinecraftClient.getInstance();
@@ -142,9 +142,9 @@ public class Keybinds extends MenuGui implements ClientModInitializer {
             }
 
             //Toggle Legacy Pvp
-            if (legacyPvp.wasPressed()) {
+            //if (legacyPvp.wasPressed()) {
                 //Pvp.Pvp();
-            }
+            //}
         });
     }
 }

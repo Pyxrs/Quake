@@ -1,11 +1,16 @@
 package io.github.simplycmd.quake.config;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
+import com.terraformersmc.modmenu.api.ConfigScreenFactory;
+import com.terraformersmc.modmenu.api.ModMenuApi;
+import io.github.simplycmd.quake.Main;
+import me.lortseam.completeconfig.gui.ConfigScreenBuilder;
+import me.lortseam.completeconfig.gui.cloth.ClothConfigScreenBuilder;
 
-@Environment(EnvType.CLIENT)
-public class ModMenuIntegration{// extends ModMenuConfigScreen {
-    public ModMenuIntegration() {
-        //super(OroConfigTestMod.CONFIG);
+public final class ModMenuIntegration implements ModMenuApi {
+    private final ConfigScreenBuilder screenBuilder = new ClothConfigScreenBuilder();
+
+    @Override
+    public ConfigScreenFactory<?> getModConfigScreenFactory() {
+        return parent -> screenBuilder.build(parent, Main.getConfig());
     }
 }

@@ -6,10 +6,8 @@ import io.github.cottonmc.cotton.gui.widget.WLabel;
 import io.github.cottonmc.cotton.gui.widget.WToggleButton;
 import net.minecraft.text.TranslatableText;
 
-import static io.github.simplycmd.quake.Main.QUAKE_CONFIG;
-
 public class MenuGui extends LightweightGuiDescription {
-    public MenuGui() {
+    /*public MenuGui() {
         //Background
         WGridPanel root = new WGridPanel();
         setRootPanel(root);
@@ -76,5 +74,5 @@ public class MenuGui extends LightweightGuiDescription {
         } else {
             throw new RuntimeException("You gotta add the new case for the new option ya know?");
         }
-    }
+    }*/
 }

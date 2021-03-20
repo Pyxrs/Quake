@@ -1,10 +1,11 @@
 package io.github.simplycmd.quake;
 
 import io.github.simplycmd.quake.config.QuakeConfig;
+import io.github.simplycmd.quake.config.Settings;
 import io.github.simplycmd.quake.gui.MenuGui;
 import io.github.simplycmd.quake.gui.MenuScreen;
-//import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
-//import me.sargunvohra.mcmods.autoconfig1u.serializer.JanksonConfigSerializer;
+import lombok.Getter;
+import me.lortseam.completeconfig.data.Config;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.event.client.ClientTickCallback;
@@ -26,7 +27,9 @@ public class Main implements ClientModInitializer {
 	public static final double MAX_BRIGHTNESS = 12.0D;
 	public static final EntityAttributeModifier MODIFIER = new EntityAttributeModifier("speedy", 100, EntityAttributeModifier.Operation.MULTIPLY_BASE);
 	public static final MinecraftClient CLIENT = MinecraftClient.getInstance();
-	public static QuakeConfig QUAKE_CONFIG;
+
+	@Getter
+	private static Config config;
 
 	public static GameOptions gameOptions;
 
@@ -73,11 +76,10 @@ public class Main implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-		//AutoConfig.register(QuakeConfig.class, JanksonConfigSerializer::new);
-		QUAKE_CONFIG = new QuakeConfig(); //AutoConfig.getConfigHolder(QuakeConfig.class).getConfig();
-		fullbrightOld = QUAKE_CONFIG.fullbright;
-		sprintOld = QUAKE_CONFIG.sprint;
-		sneakOld = QUAKE_CONFIG.sneak;
+		config = Config.builder("quake").add(new Settings()).build();
+		fullbrightOld = true;//QUAKE_CONFIG.fullbright;
+		sprintOld = true;//QUAKE_CONFIG.sprint;
+		sneakOld = true;//QUAKE_CONFIG.sneak;
 		RegisterKeybindings();
 
 		ClientTickCallback.EVENT.register(client -> { if (client.player != null) {
@@ -87,7 +89,7 @@ public class Main implements ClientModInitializer {
 			}
 
 			//Fullbright
-			if (fullbrightKey.wasPressed()) {
+			/*if (fullbrightKey.wasPressed()) {
 				QUAKE_CONFIG.fullbright = !QUAKE_CONFIG.fullbright;
 				if (QUAKE_CONFIG.fullbright) {
 					client.player.sendMessage(new TranslatableText("msg.fullbright"), false);
@@ -137,7 +139,7 @@ public class Main implements ClientModInitializer {
 					client.player.sendMessage(new TranslatableText("msg.normal"), false);
 				}
 			}
-			PvpToggle();
+			PvpToggle();*/
 
 			//Ghost Blocks
 			if (ghostBlocks.wasPressed()) {
@@ -170,7 +172,7 @@ public class Main implements ClientModInitializer {
 		KeyBindingHelper.registerKeyBinding(ghostBlocks);
 	}
 
-	public static void FullbrightToggle() {
+	/*public static void FullbrightToggle() {
 		if (gameOptions == null) {gameOptions = CLIENT.options;}
 
 		if (!QUAKE_CONFIG.fullbright) {
@@ -204,7 +206,7 @@ public class Main implements ClientModInitializer {
 			if (CLIENT.player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_SPEED).hasModifier(MODIFIER))
 			CLIENT.player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_SPEED).removeModifier(MODIFIER);
 		}
-	}
+	}*/
 
 	public static Boolean HasChanged(Boolean previous, Boolean now) {
 		if (previous != now) {

@@ -2,29 +2,38 @@
   "schemaVersion": 1,
   "id": "quake",
   "version": "${version}",
+
   "name": "Quake Client",
   "description": "Quake Client is a next-generation innovative Minecraft client aiming at getting the best of both worlds (1.8 & 1.9+)",
   "authors": [
     "SimplyCmd"
   ],
-  "contributors": [],
   "contact": {
-    "homepage": "https://SimplyCmd.github.io/Quake/",
+    "homepage": "https://simplycmd.github.io/Quake/",
     "sources": "https://github.com/SimplyCmd/Quake"
   },
-  "license": "MIT",
+
+  "license": "CC0-1.0",
   "icon": "assets/quake/icon.png",
+
   "environment": "*",
   "entrypoints": {
-    "main": [],
-    "client": ["io.github.simplycmd.quake.Quake","io.github.simplycmd.quake.Keybinds"],
-    "server": []
+    "client": ["io.github.simplycmd.quake.Main"],
+    "modmenu": [
+
+    ]
   },
   "mixins": [
     "quake.mixins.json"
   ],
+
+
   "depends": {
-    "fabricloader": ">=0.9.0",
-    "fabric": "*"
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "modmenu": "*"
   }
 }

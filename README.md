@@ -1,2 +1,9 @@
-# Quake Client
-Quake Client is a next-generation innovative Minecraft client aiming at getting the best of both worlds (1.8 &amp; 1.9+)
+# Fabric Example Mod
+
+## Setup
+
+For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+
+## License
+
+This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.

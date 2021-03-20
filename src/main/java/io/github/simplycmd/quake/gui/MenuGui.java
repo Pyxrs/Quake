@@ -4,63 +4,77 @@ import io.github.cottonmc.cotton.gui.client.LightweightGuiDescription;
 import io.github.cottonmc.cotton.gui.widget.WGridPanel;
 import io.github.cottonmc.cotton.gui.widget.WLabel;
 import io.github.cottonmc.cotton.gui.widget.WToggleButton;
-import io.github.simplycmd.quake.mixin.LegacyPvp;
-import io.github.simplycmd.quake.mods.Fullbright;
-import io.github.simplycmd.quake.mods.Toggles;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.TranslatableText;
 
+import static io.github.simplycmd.quake.Main.QUAKE_CONFIG;
+
 public class MenuGui extends LightweightGuiDescription {
-    private static MinecraftClient client = MinecraftClient.getInstance();
-
     public MenuGui() {
-        //Sync toggles with options
-        Sync();
-
         //Background
         WGridPanel root = new WGridPanel();
         setRootPanel(root);
         root.setSize(300, 200);
-        
+
         //Title
         WLabel title = new WLabel("Quake Client");
         root.add(title, 0, 0);
 
-        //Fullbright
+        //Main
         WToggleButton fullbright = new WToggleButton(new TranslatableText("gui.button.fullbright"));
-        root.add(fullbright, 0, 1);
-        fullbright.setToggle(Fullbright.fbToggle);
-        fullbright.setOnToggle(b -> Fullbright.Fullbright());
+        ToggleButton(root, fullbright, 0, 1, 0);
 
         //Toggle Sprint
-        WToggleButton toggleSprint = new WToggleButton(new TranslatableText("gui.button.togglesprint"));
-        root.add(toggleSprint, 0, 2);
-        toggleSprint.setToggle(Toggles.spToggle);
-        toggleSprint.setOnToggle(b -> Toggles.ToggleSprint());
+        WToggleButton toggleSprint = new WToggleButton(new TranslatableText("gui.button.sprint"));
+        ToggleButton(root, toggleSprint, 0, 2, 1);
 
         //Toggle Sneak
-        WToggleButton toggleSneak = new WToggleButton(new TranslatableText("gui.button.togglesneak"));
-        root.add(toggleSneak, 0, 3);
-        toggleSneak.setToggle(Toggles.snToggle);
-        toggleSneak.setOnToggle(b -> Toggles.ToggleSneak());
+        WToggleButton toggleSneak = new WToggleButton(new TranslatableText("gui.button.sneak"));
+        ToggleButton(root, toggleSneak, 0, 3, 2);
 
         //Toggle Legacy Pvp
-        //WToggleButton legacyPvp = new WToggleButton(new TranslatableText("gui.button.pvp"));
-        //root.add(legacyPvp, 0, 4);
-        //legacyPvp.setToggle(Pvp.pvpToggle);
-        //legacyPvp.setOnToggle(b -> Pvp.Pvp());
-        
+        WToggleButton legacyPvp = new WToggleButton(new TranslatableText("gui.button.pvp"));
+        ToggleButton(root, legacyPvp, 0, 4, 3);
+
         root.validate(this);
     }
 
-    public static void Sync() {
-        if (client.options != null) {
-            Toggles.spToggle = client.options.sprintToggled;
-            Toggles.snToggle = client.options.sneakToggled;
-            if (Fullbright.gameOptions == null) {Fullbright.gameOptions = client.options;}
-            if (Fullbright.gameOptions.gamma == 12.0D) {
-                Fullbright.fbToggle = true;
+    private static void ToggleButton(WGridPanel root, WToggleButton button, int x, int y, int config) {
+        root.add(button, x, y);
+        button.setToggle(GetConfig(config));
+        button.setOnToggle(on -> {
+            if (button.getToggle()) {
+                SetConfig(config, true);
+            } else {
+                SetConfig(config, false);
             }
+        });
+    }
+
+    public static void SetConfig(int config, boolean output) {
+        if (config == 0) {
+            QUAKE_CONFIG.fullbright = output;
+        } else if (config == 1) {
+            QUAKE_CONFIG.sprint = output;
+        } else if (config == 2) {
+            QUAKE_CONFIG.sneak = output;
+        } else if (config == 3) {
+            QUAKE_CONFIG.pvp = output;
+        } else {
+            throw new RuntimeException("You gotta add the new case for the new option ya know?");
+        }
+    }
+
+    public static Boolean GetConfig(int config) {
+        if (config == 0) {
+            return QUAKE_CONFIG.fullbright;
+        } else if (config == 1) {
+            return QUAKE_CONFIG.sprint;
+        } else if (config == 2) {
+            return QUAKE_CONFIG.sneak;
+        } else if (config == 3) {
+            return QUAKE_CONFIG.pvp;
+        } else {
+            throw new RuntimeException("You gotta add the new case for the new option ya know?");
         }
     }
 }

@@ -6,10 +6,13 @@ import io.github.simplycmd.quake.gui.MenuGui;
 import io.github.simplycmd.quake.gui.MenuScreen;
 import lombok.Getter;
 import me.lortseam.completeconfig.data.Config;
+import me.lortseam.completeconfig.gui.ConfigScreenBuilder;
+import me.lortseam.completeconfig.gui.cloth.ClothConfigScreenBuilder;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.event.client.ClientTickCallback;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.options.GameOptions;
 import net.minecraft.client.options.KeyBinding;
@@ -24,6 +27,11 @@ import org.lwjgl.glfw.GLFW;
 
 
 public class Main implements ClientModInitializer {
+	/*
+	By the way, this project uses Lombok
+	https://objectcomputing.com/resources/publications/sett/january-2010-reducing-boilerplate-code-with-project-lombok
+	 */
+
 	public static final double MAX_BRIGHTNESS = 12.0D;
 	public static final EntityAttributeModifier MODIFIER = new EntityAttributeModifier("speedy", 100, EntityAttributeModifier.Operation.MULTIPLY_BASE);
 	public static final MinecraftClient CLIENT = MinecraftClient.getInstance();
@@ -74,6 +82,9 @@ public class Main implements ClientModInitializer {
 			"key.categories.quake"
 	);
 
+	//private final ConfigScreenBuilder screenBuilder = new ClothConfigScreenBuilder();
+	//Screen configScreen = screenBuilder.build(parentScreen, config);
+
 	@Override
 	public void onInitializeClient() {
 		config = Config.builder("quake").add(new Settings()).build();
@@ -86,6 +97,8 @@ public class Main implements ClientModInitializer {
 			//Menu
 			if (menu.wasPressed()) {
 				client.openScreen(new MenuScreen(new MenuGui()));
+				//MinecraftClient.getInstance().openScreen(configScreen);
+
 			}
 
 			//Fullbright

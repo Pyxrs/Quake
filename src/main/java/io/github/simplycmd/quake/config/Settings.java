@@ -12,39 +12,24 @@ public final class Settings implements ConfigContainer {
 
     @Transitive
     @ConfigEntries
-    public static class DataTypes implements ConfigGroup {
+    public static class Features implements ConfigGroup {
 
-        private boolean bool;
-        private int integer;
-        @ConfigEntry.BoundedInteger(min = 0, max = 10)
-        private int boundedInt;
-        private long aLong;
-        @ConfigEntry.BoundedLong(min = 0, max = 100)
-        private long boundedLong;
-        private float aFloat;
-        private double aDouble;
-        private String string = "";
-        private AnEnum anEnum = AnEnum.FOO;
-        private List<String> list = Arrays.asList("First entry", "Second entry");
+        @ConfigEntry(tooltipTranslationKeys = {"fullbrightTooltip"})
+        private boolean fullbright;
 
-    }
+        @ConfigEntry(tooltipTranslationKeys = {"sprintTooltip"})
+        private boolean sprint;
 
-    public enum AnEnum {
-        FOO, BAR, BAZ
+        @ConfigEntry(tooltipTranslationKeys = {"sneakTooltip"})
+        private boolean sneak;
     }
 
     @Transitive
     @ConfigEntries
-    public static class Tooltips implements ConfigGroup {
+    public static class Experimental implements ConfigGroup {
 
-        @ConfigEntry
-        private boolean defaultOneLine;
-
-        @ConfigEntry
-        private boolean defaultMultiLine;
-
-        @ConfigEntry(tooltipTranslationKeys = {"customTooltipLine1", "customTooltipLine2"})
-        private boolean custom;
+        @ConfigEntry(tooltipTranslationKeys = {"pvpTooltip1", "pvpTooltip2", "pvpTooltip3"})
+        private boolean pvp;
 
     }
 

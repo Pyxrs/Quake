@@ -3,30 +3,36 @@
 
   "key.quake.menu": "Quake Menu",
 
+  "config.quake.features": "Features",
+  "config.quake.experimental": "Experimental",
+
   "key.quake.reveal": "Fix Glitching",
   "msg.request": "Fixing Glitching (You will be kicked if you spam this on some servers!)",
 
   "key.quake.fullbright": "Toggle Fullbright",
   "gui.button.fullbright": "Fullbright",
-  "text.autoconfig.quake.option.fullbright": "Fullbright",
+  "config.quake.features.fullbright": "Fullbright",
   "msg.fullbright": "Fullbright is ON",
   "msg.nobright": "Fullbright is OFF",
 
   "key.quake.sprint": "Toggle Sprint",
   "gui.button.sprint": "Toggle Sprint",
-  "text.autoconfig.quake.option.sprint": "Toggle Sprint",
+  "config.quake.features.sprint": "Toggle Sprint",
   "msg.sprinthold": "Changed sprint mode to HOLD",
   "msg.sprinttoggle": "Changed sprint mode to TOGGLE",
 
   "key.quake.sneak": "Toggle Sneak",
   "gui.button.sneak": "Toggle Sneak",
-  "text.autoconfig.quake.option.sneak": "Toggle Sneak",
+  "config.quake.features.sneak": "Toggle Sneak",
   "msg.sneakhold": "Changed sneak mode to HOLD",
   "msg.sneaktoggle": "Changed sneak mode to TOGGLE",
 
   "key.quake.pvp": "Toggle Legacy Pvp (1.8/1.9+)",
   "gui.button.pvp": "Legacy 1.8 Pvp",
-  "text.autoconfig.quake.option.pvp": "Legacy 1.8 Pvp",
+  "config.quake.experimental.pvp": "Legacy 1.8 Pvp",
+  "config.quake.pvpTooltip1": "Removes the 1.9+ attack cooldown.",
+  "config.quake.pvpTooltip2": "This only works visually on servers,",
+  "config.quake.pvpTooltip3": "but will fully work on single-player",
   "msg.legacy": "1.8 Pvp is ON",
   "msg.normal": "1.8 Pvp is OFF"
 }

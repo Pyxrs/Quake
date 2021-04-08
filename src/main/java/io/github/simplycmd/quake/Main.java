@@ -1,9 +1,9 @@
 package io.github.simplycmd.quake;
 
+import com.terraformersmc.modmenu.ModMenu;
+import io.github.simplycmd.quake.config.ModMenuIntegration;
 import io.github.simplycmd.quake.config.QuakeConfig;
 import io.github.simplycmd.quake.config.Settings;
-import io.github.simplycmd.quake.gui.MenuGui;
-import io.github.simplycmd.quake.gui.MenuScreen;
 import lombok.Getter;
 import me.lortseam.completeconfig.data.Config;
 import me.lortseam.completeconfig.gui.ConfigScreenBuilder;
@@ -45,70 +45,27 @@ public class Main implements ClientModInitializer {
 	public static Boolean sprintOld;
 	public static Boolean sneakOld;
 
-	private final KeyBinding menu = new KeyBinding(
-			"key.quake.menu",
-			InputUtil.Type.KEYSYM,
-			GLFW.GLFW_KEY_RIGHT_SHIFT,
-			"key.categories.quake"
-	);
-	private final KeyBinding fullbrightKey = new KeyBinding(
-			"key.quake.fullbright",
-			InputUtil.Type.KEYSYM,
-			GLFW.GLFW_KEY_UNKNOWN,
-			"key.categories.quake"
-	);
-	private final KeyBinding toggleSprint = new KeyBinding(
-			"key.quake.sprint",
-			InputUtil.Type.KEYSYM,
-			GLFW.GLFW_KEY_UNKNOWN,
-			"key.categories.quake"
-	);
-	private final KeyBinding toggleSneak = new KeyBinding(
-			"key.quake.sneak",
-			InputUtil.Type.KEYSYM,
-			GLFW.GLFW_KEY_UNKNOWN,
-			"key.categories.quake"
-	);
-	private final KeyBinding togglePvp = new KeyBinding(
-			"key.quake.pvp",
-			InputUtil.Type.KEYSYM,
-			GLFW.GLFW_KEY_K,
-			"key.categories.quake"
-	);
-	private final KeyBinding ghostBlocks = new KeyBinding(
-			"key.quake.reveal",
-			InputUtil.Type.KEYSYM,
-			GLFW.GLFW_KEY_G,
-			"key.categories.quake"
-	);
-
-	//private final ConfigScreenBuilder screenBuilder = new ClothConfigScreenBuilder();
-	//Screen configScreen = screenBuilder.build(parentScreen, config);
-
 	@Override
 	public void onInitializeClient() {
-		config = Config.builder("quake").add(new Settings()).build();
 		fullbrightOld = true;//QUAKE_CONFIG.fullbright;
 		sprintOld = true;//QUAKE_CONFIG.sprint;
 		sneakOld = true;//QUAKE_CONFIG.sneak;
-		RegisterKeybindings();
+	}
 
-		ClientTickCallback.EVENT.register(client -> { if (client.player != null) {
+		/*ClientTickCallback.EVENT.register(client -> { if (client.player != null) {
 			//Menu
-			if (menu.wasPressed()) {
-				client.openScreen(new MenuScreen(new MenuGui()));
-				//MinecraftClient.getInstance().openScreen(configScreen);
-
+			if (Values.menu) {
+				//client.openScreen(new MenuScreen(new MenuGui()));
+				client.openScreen(configScreen);
 			}
 
 			//Fullbright
-			/*if (fullbrightKey.wasPressed()) {
-				QUAKE_CONFIG.fullbright = !QUAKE_CONFIG.fullbright;
-				if (QUAKE_CONFIG.fullbright) {
-					client.player.sendMessage(new TranslatableText("msg.fullbright"), false);
-				} else {
-					client.player.sendMessage(new TranslatableText("msg.nobright"), false);
-				}
+			if (Values.fullbright) {
+				Values.fullbright = false;
+				client.player.sendMessage(new TranslatableText("msg.fullbright"), false);
+			} else {
+				client.player.sendMessage(new TranslatableText("msg.nobright"), false);
+			}
 			}
 			if (HasChanged(fullbrightOld, QUAKE_CONFIG.fullbright)) {
 				FullbrightToggle();
@@ -116,7 +73,7 @@ public class Main implements ClientModInitializer {
 			}
 
 			//Toggle Sprint
-			if (toggleSprint.wasPressed()) {
+			if (Values.sprint) {
 				QUAKE_CONFIG.sprint = !QUAKE_CONFIG.sprint;
 				if (QUAKE_CONFIG.sprint) {
 					client.player.sendMessage(new TranslatableText("msg.sprinthold"), false);
@@ -130,7 +87,7 @@ public class Main implements ClientModInitializer {
 			}
 
 			//Toggle Sneak
-			if (toggleSneak.wasPressed()) {
+			if (Values.sneak) {
 				QUAKE_CONFIG.sneak = !QUAKE_CONFIG.sneak;
 				if (QUAKE_CONFIG.sneak) {
 					client.player.sendMessage(new TranslatableText("msg.sneakhold"), false);
@@ -144,7 +101,7 @@ public class Main implements ClientModInitializer {
 			}
 
 			//Toggle Legacy Pvp - it needs to be constantly updated because Mojank
-			if (togglePvp.wasPressed()) {
+			if (Values.pvp) {
 				QUAKE_CONFIG.pvp = !QUAKE_CONFIG.pvp;
 				if (QUAKE_CONFIG.pvp) {
 					client.player.sendMessage(new TranslatableText("msg.legacy"), false);
@@ -152,7 +109,7 @@ public class Main implements ClientModInitializer {
 					client.player.sendMessage(new TranslatableText("msg.normal"), false);
 				}
 			}
-			PvpToggle();*/
+			PvpToggle();
 
 			//Ghost Blocks
 			if (ghostBlocks.wasPressed()) {
@@ -175,17 +132,7 @@ public class Main implements ClientModInitializer {
 		}});
 	}
 
-	// Yea so these add the keybindings into the game because why not
-	private void RegisterKeybindings() {
-		KeyBindingHelper.registerKeyBinding(menu);
-		KeyBindingHelper.registerKeyBinding(fullbrightKey);
-		KeyBindingHelper.registerKeyBinding(toggleSprint);
-		KeyBindingHelper.registerKeyBinding(toggleSneak);
-		KeyBindingHelper.registerKeyBinding(togglePvp);
-		KeyBindingHelper.registerKeyBinding(ghostBlocks);
-	}
-
-	/*public static void FullbrightToggle() {
+	public static void FullbrightToggle() {
 		if (gameOptions == null) {gameOptions = CLIENT.options;}
 
 		if (!QUAKE_CONFIG.fullbright) {
@@ -219,7 +166,7 @@ public class Main implements ClientModInitializer {
 			if (CLIENT.player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_SPEED).hasModifier(MODIFIER))
 			CLIENT.player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_SPEED).removeModifier(MODIFIER);
 		}
-	}*/
+	}
 
 	public static Boolean HasChanged(Boolean previous, Boolean now) {
 		if (previous != now) {
@@ -227,5 +174,5 @@ public class Main implements ClientModInitializer {
 		} else {
 			return false;
 		}
-	}
+	}*/
 }

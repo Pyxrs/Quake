@@ -18,7 +18,7 @@
 
   "environment": "*",
   "entrypoints": {
-    "client": ["io.github.simplycmd.quake.Main"],
+    "client": ["io.github.simplycmd.quake.Main", "io.github.simplycmd.quake.Values"],
     "modmenu": ["io.github.simplycmd.quake.config.ModMenuIntegration"]
   },
   "mixins": [

@@ -4,6 +4,9 @@
   "package": "io.github.simplycmd.quake.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "PingDisplayMixin",
+    "PvpParticlesMixin",
+    "SingleplayerPvpParticlesMixin"
   ],
   "client": [
   ],

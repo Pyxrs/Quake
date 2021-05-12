@@ -37,6 +37,8 @@ dependencies {
 
 	modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
 
+	modImplementation(include("com.github.SimplyCmd:SimplyLib:${project.simplylib_version}"))
+
 	compileOnly("org.projectlombok:lombok:${project.lombok_version}")
 	annotationProcessor("org.projectlombok:lombok:${project.lombok_version}")
 

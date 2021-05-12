@@ -1,18 +1,13 @@
 package io.github.simplycmd.quake.mixin;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import io.github.simplycmd.quake.Values;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.gui.hud.PlayerListHud;
 import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Formatting;
-import net.minecraft.world.GameMode;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
 
 @Mixin(PlayerListHud.class)
 public class PingDisplayMixin {
@@ -22,7 +17,7 @@ public class PingDisplayMixin {
      */
     @Overwrite
     public void renderLatencyIcon(MatrixStack matrices, int i, int j, int k, PlayerListEntry entry) {
-        if (Values.ping) {
+        if (true) {
             int color;
             if (entry.getLatency() < 0) {
                 color = Formatting.BLACK.getColorValue();

@@ -3,12 +3,14 @@
   "minVersion": "0.8",
   "package": "io.github.simplycmd.quake.mixin",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [
+  "client": [
+    "AutoGoodGameMixin",
+    "DisableToastsMixin",
     "PingDisplayMixin",
     "PvpParticlesMixin",
-    "SingleplayerPvpParticlesMixin"
-  ],
-  "client": [
+    "SingleplayerPvpParticlesMixin",
+    "UnlockAllRecipesMixin",
+    "CustomCapeMixin"
   ],
   "injectors": {
     "defaultRequire": 1

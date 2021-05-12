@@ -1,5 +1,7 @@
 package io.github.simplycmd.quake.config;
 
+import lombok.Getter;
+import lombok.Setter;
 import me.lortseam.completeconfig.api.ConfigContainer;
 import me.lortseam.completeconfig.api.ConfigEntries;
 import me.lortseam.completeconfig.api.ConfigEntry;
@@ -22,6 +24,9 @@ public final class Settings implements ConfigContainer {
 
         @ConfigEntry(tooltipTranslationKeys = {"sneakTooltip"})
         private boolean sneak;
+
+        @ConfigEntry(tooltipTranslationKeys = {"pingTooltip"})
+        private boolean ping;
     }
 
     @Transitive

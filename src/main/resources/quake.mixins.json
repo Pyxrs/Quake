@@ -10,7 +10,7 @@
     "PvpParticlesMixin",
     "SingleplayerPvpParticlesMixin",
     "UnlockAllRecipesMixin",
-    "CustomCapeMixin"
+    "GameRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

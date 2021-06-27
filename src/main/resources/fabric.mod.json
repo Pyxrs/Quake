@@ -20,20 +20,19 @@
   "entrypoints": {
     "client": [
       "io.github.simplycmd.quake.Main"
+    ],
+    "modmenu": [
+      "io.github.simplycmd.quake.gui.ModMenu"
     ]
   },
   "mixins": [
     "quake.mixins.json"
   ],
-
-
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",
     "minecraft": "1.17.x",
-    "java": ">=16"
-  },
-  "suggests": {
+    "java": ">=16",
     "modmenu": "*"
   }
 }

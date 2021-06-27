@@ -3,11 +3,14 @@ package io.github.simplycmd.quake;
 import com.mojang.authlib.GameProfile;
 import io.github.simplycmd.quake.features.Feature;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.event.client.ClientTickCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.GameOptions;
+import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.texture.NativeImageBackedTexture;
+import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
@@ -24,17 +27,16 @@ public class Main implements ClientModInitializer {
 
 	private static short tick = 0;
 
-	public static GameOptions gameOptions = MinecraftClient.getInstance().options;
-
 	// NORMAL FEATURES
 
 	public static Feature fullbright = new Feature("fullbright", GLFW.GLFW_KEY_UNKNOWN) {
 		@Override
 		public void functionality() {
-			if (true /* Replace with config check */) {
-				gameOptions.gamma = 1.0D;
+			Config.getInstance().setFullbright(!Config.getInstance().isFullbright());
+			if (Config.getInstance().isFullbright()) {
+				MinecraftClient.getInstance().options.gamma = 1.0D;
 			} else {
-				gameOptions.gamma = 12.0D;
+				MinecraftClient.getInstance().options.gamma = 12.0D;
 			}
 		}
 	};
@@ -69,38 +71,38 @@ public class Main implements ClientModInitializer {
 		}
 	};
 
+	public static final KeyBinding zoom = new KeyBinding("key.quake.zoom", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_C, "key.categories.quake");
+
 	@Override
 	public void onInitializeClient() {
+		final KeyBinding print = new KeyBinding("key.quake.print", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_F8, "key.categories.quake");
+		KeyBindingHelper.registerKeyBinding(print);
+		KeyBindingHelper.registerKeyBinding(zoom);
+
+		ConfigHandler.init();
 		fullbright.startup();
 		sprint.startup();
 		sneak.startup();
 		ping.startup();
 		pvp.startup();
 		ClientTickCallback.EVENT.register(client -> { if (client.player != null) {
-			if (fullbright.getKeyBinding().wasPressed()); // Should toggle fb
+			if (fullbright.getKeyBinding().wasPressed()) fullbright.functionality();
+
+			ConfigHandler.saveTick();
+
+			if (print.wasPressed()) System.out.println(Config.getInstance().toString());
 		}});
 	}
 
-	// Thanks to https://github.com/Hibiii/Kappa for providing this code
-	public static Map<String, Identifier> capes = new HashMap<String, Identifier>();
-	public static void loadCape(GameProfile player, CapeTextureAvailableCallback callback) {
-		Runnable runnable = () -> {
-			try {
+	/*
+	try {
 				URL url = new URL("http://s.optifine.net/capes/" + player.getName() + ".png");
 				NativeImage tex = NativeImage.read(url.openStream()); //uncrop(NativeImage.read(url.openStream()));
 				NativeImageBackedTexture nIBT = new NativeImageBackedTexture(tex);
 				Identifier id = MinecraftClient.getInstance().getTextureManager().registerDynamicTexture("cape" + player.getName().toLowerCase(), nIBT);
-				capes.put(player.getName(), id);
-				callback.onTexAvail(id);
 			}
 			catch (Exception e) {
 				e.printStackTrace();
 			}
-		};
-		Util.getMainWorkerExecutor().execute(runnable);
-	}
-
-	public interface CapeTextureAvailableCallback {
-		void onTexAvail(Identifier id);
-	}
+	 */
 }

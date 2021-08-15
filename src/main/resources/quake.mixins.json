@@ -10,7 +10,8 @@
     "PvpParticlesMixin",
     "SingleplayerPvpParticlesMixin",
     "UnlockAllRecipesMixin",
-    "GameRendererMixin"
+    "ZoomMixin",
+    "TimeChangerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

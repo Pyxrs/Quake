@@ -1,4 +1,4 @@
-package io.github.simplycmd.quake;
+package io.github.simplycmd.quake.config;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,13 +26,16 @@ public class Config implements Serializable {
     @Setter
     private boolean pvp = false;
 
+    @Getter
+    @Setter
+    private boolean time_changer = false;
+
+    @Getter
+    @Setter
+    private int time_changer_value = 0;
+
     public Config() {
     }
 
     public static Config getInstance() { return ConfigHandler.config; };
-
-    @Override
-    public String toString() {
-        return "Fullbright: " + fullbright + ", Spring: " + sprint + ", Sneak: " + sneak + ", Ping: " + ping + ", PVP: " + pvp;
-    }
 }

@@ -1,10 +1,7 @@
-package io.github.simplycmd.quake.gui;
+package io.github.simplycmd.quake.config;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.text.LiteralText;
-import net.minecraft.text.Text;
 
 public class ModMenu implements ModMenuApi {
     @Override

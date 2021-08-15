@@ -1,4 +1,4 @@
-package io.github.simplycmd.quake.gui;
+package io.github.simplycmd.quake.config;
 
 import io.github.cottonmc.cotton.gui.GuiDescription;
 import io.github.cottonmc.cotton.gui.client.CottonClientScreen;

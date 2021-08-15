@@ -22,7 +22,7 @@
       "io.github.simplycmd.quake.Main"
     ],
     "modmenu": [
-      "io.github.simplycmd.quake.gui.ModMenu"
+      "io.github.simplycmd.quake.config.ModMenu"
     ]
   },
   "mixins": [

@@ -1,24 +1,18 @@
 package io.github.simplycmd.quake;
 
-import com.mojang.authlib.GameProfile;
+import io.github.simplycmd.quake.config.Config;
+import io.github.simplycmd.quake.config.ConfigGui;
+import io.github.simplycmd.quake.config.ConfigHandler;
+import io.github.simplycmd.quake.config.ConfigScreen;
 import io.github.simplycmd.quake.features.Feature;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.event.client.ClientTickCallback;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.option.KeyBinding;
-import net.minecraft.client.texture.NativeImage;
-import net.minecraft.client.texture.NativeImageBackedTexture;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.Util;
 import org.lwjgl.glfw.GLFW;
-
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class Main implements ClientModInitializer {
@@ -75,9 +69,10 @@ public class Main implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-		final KeyBinding print = new KeyBinding("key.quake.print", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_F8, "key.categories.quake");
-		KeyBindingHelper.registerKeyBinding(print);
 		KeyBindingHelper.registerKeyBinding(zoom);
+
+		final KeyBinding menu = new KeyBinding("key.quake.menu", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_RIGHT_SHIFT, "key.categories.quake");
+		KeyBindingHelper.registerKeyBinding(menu);
 
 		ConfigHandler.init();
 		fullbright.startup();
@@ -90,7 +85,7 @@ public class Main implements ClientModInitializer {
 
 			ConfigHandler.saveTick();
 
-			if (print.wasPressed()) System.out.println(Config.getInstance().toString());
+			if (menu.wasPressed()) MinecraftClient.getInstance().openScreen(new ConfigScreen(new ConfigGui()));
 		}});
 	}
 

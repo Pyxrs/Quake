@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Environment(EnvType.CLIENT)
 @Mixin(GameRenderer.class)
-public class GameRendererMixin {
+public class ZoomMixin {
     @Inject(method = "getFov", at = @At("HEAD"), cancellable = true)
     public void getZoomLevel(CallbackInfoReturnable<Double> cir) {
         if (Main.zoom.isPressed()) {
